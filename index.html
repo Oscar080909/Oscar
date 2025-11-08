@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina para Mi Noviecita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            color: #d63384;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            overflow: hidden; 
+            position: relative;
+            height: 100vh;
+        }
+        
+        .heart {
+            position: absolute;
+            top: -10px;
+            font-size: 20px;
+            color: #ff6b9d;
+            animation: fall 10s linear infinite;
+            z-index: 1;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .petal {
+            position: absolute;
+            top: -10px;
+            font-size: 18px;
+            color: #ffb6c1;
+            animation: petalFall 12s linear infinite;
+            z-index: 1;
+        }
+        @keyframes petalFall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(180deg); opacity: 0; }
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            color: #ff1493;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: bounceIn 2s ease-out;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2em;
+            position: absolute;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            animation: floatAround 8s linear infinite;
+            z-index: 5;
+            white-space: nowrap;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translate(100vw, 100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        .message:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .message:nth-child(2) { top: 20%; left: 80%; animation-delay: 1s; }
+        .message:nth-child(3) { top: 30%; left: 20%; animation-delay: 2s; }
+        .message:nth-child(4) { top: 40%; left: 70%; animation-delay: 3s; }
+        .message:nth-child(5) { top: 50%; left: 10%; animation-delay: 4s; }
+        .message:nth-child(6) { top: 60%; left: 90%; animation-delay: 5s; }
+        .message:nth-child(7) { top: 15%; left: 50%; animation-delay: 6s; }
+        .message:nth-child(8) { top: 25%; left: 30%; animation-delay: 7s; }
+        .message:nth-child(9) { top: 35%; left: 60%; animation-delay: 8s; }
+        .message:nth-child(10) { top: 45%; left: 40%; animation-delay: 9s; }
+        .message:nth-child(11) { top: 55%; left: 15%; animation-delay: 10s; }
+        .message:nth-child(12) { top: 65%; left: 85%; animation-delay: 11s; }
+        .message:nth-child(13) { top: 5%; left: 75%; animation-delay: 12s; }
+        .message:nth-child(14) { top: 75%; left: 25%; animation-delay: 13s; }
+        .message:nth-child(15) { top: 85%; left: 55%; animation-delay: 14s; }
+        .message:nth-child(16) { top: 10%; left: 45%; animation-delay: 15s; }
+        .message:nth-child(17) { top: 20%; left: 65%; animation-delay: 16s; }
+        .message:nth-child(18) { top: 30%; left: 35%; animation-delay: 17s; }
+        .message:nth-child(19) { top: 40%; left: 5%; animation-delay: 18s; }
+        .message:nth-child(20) { top: 50%; left: 95%; animation-delay: 19s; }
+        .message:nth-child(21) { top: 60%; left: 50%; animation-delay: 20s; }
+        
+        .messages-mobile {
+            display: none; /* Oculto por defecto */
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .messages-mobile .message-mobile {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2em;
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            animation: fadeInUp 2s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .messages-mobile .message-mobile:nth-child(1) { animation-delay: 0s; }
+        .messages-mobile .message-mobile:nth-child(2) { animation-delay: 0.5s; }
+        .messages-mobile .message-mobile:nth-child(3) { animation-delay: 1s; }
+        .messages-mobile .message-mobile:nth-child(4) { animation-delay: 1.5s; }
+        .messages-mobile .message-mobile:nth-child(5) { animation-delay: 2s; }
+        .messages-mobile .message-mobile:nth-child(6) { animation-delay: 2.5s; }
+        .messages-mobile .message-mobile:nth-child(7) { animation-delay: 3s; }
+        .messages-mobile .message-mobile:nth-child(8) { animation-delay: 3.5s; }
+        .messages-mobile .message-mobile:nth-child(9) { animation-delay: 4s; }
+        .messages-mobile .message-mobile:nth-child(10) { animation-delay: 4.5s; }
+        .messages-mobile .message-mobile:nth-child(11) { animation-delay: 5s; }
+        .messages-mobile .message-mobile:nth-child(12) { animation-delay: 5.5s; }
+        .messages-mobile .message-mobile:nth-child(13) { animation-delay: 6s; }
+        .messages-mobile .message-mobile:nth-child(14) { animation-delay: 6.5s; }
+        .messages-mobile .message-mobile:nth-child(15) { animation-delay: 7s; }
+        .messages-mobile .message-mobile:nth-child(16) { animation-delay: 7.5s; }
+        .messages-mobile .message-mobile:nth-child(17) { animation-delay: 8s; }
+        .messages-mobile .message-mobile:nth-child(18) { animation-delay: 8.5s; }
+        .messages-mobile .message-mobile:nth-child(19) { animation-delay: 9s; }
+        .messages-mobile .message-mobile:nth-child(20) { animation-delay: 9.5s; }
+        .messages-mobile .message-mobile:nth-child(21) { animation-delay: 10s; }
+        
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .image-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 20px;
+            max-width: 900px; 
+            animation: zoomIn 2s ease-out;
+            z-index: 10;
+            padding: 0 10px;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: translateX(-50%) scale(0.8); opacity: 0; }
+            to { transform: translateX(-50%) scale(1); opacity: 1; }
+        }
+        
+        img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+        }
+        
+        p {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #ff69b4;
+            animation: fadeIn 3s ease-in-out;
+            z-index: 10;
+            text-align: center;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                height: auto;
+                overflow: auto;
+            }
+            h1 { 
+                font-size: 2.5em;
+                margin-bottom: 10px;
+            }
+            .message { 
+                display: none;
+            }
+            .messages-mobile {
+                display: block; 
+            }
+            .messages-mobile .message-mobile {
+                font-size: 1em;
+                margin: 8px;
+                padding: 8px 12px;
+            }
+            .image-container { 
+                position: static;
+                transform: none;
+                margin-top: 20px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                max-width: 100%;
+                padding: 0;
+                animation: none;
+            }
+            img { 
+                width: 100%;
+                height: auto;
+                max-width: 180px;
+                aspect-ratio: 1;
+            }
+            p {
+                position: static;
+                margin-top: 20px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2em; }
+            .messages-mobile .message-mobile {
+                font-size: 0.9em;
+                display: block; 
+                margin: 10px auto;
+                max-width: 90%;
+            }
+            .image-container { 
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            img { 
+                max-width: 250px;
+            }
+            .heart, .petal {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 10000);
+        }
+        
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.innerHTML = '🌸';
+            petal.style.left = Math.random() * 100 + 'vw';
+            petal.style.animationDuration = Math.random() * 7 + 8 + 's';
+            document.body.appendChild(petal);
+            setTimeout(() => petal.remove(), 12000);
+        }
+        
+        setInterval(createHeart, 500);
+        setInterval(createPetal, 800);
+    </script>
+    
+    <h1>¡Te Amo!</h1>
+
+    <div class="message">Te amo mucho, mi amor</div>
+    <div class="message">Te extraño demasiado a cualquier hora</div>
+    <div class="message">Eres mi todo</div>
+    <div class="message">Eres lo mejor que me a pasado</div>
+    <div class="message">Mi amor aumenta por cada segundo que pasa</div>
+    <div class="message">Me encanta soñar contigo mi niña</div>
+    <div class="message">Eres la niña que alegra mis dias</div>
+    <div class="message">No puedo imaginar mi vida sin ti</div>
+    <div class="message">Te amo con todo mi ser y mi alma</div>
+    <div class="message">Eres mi princesa, mi reina, mi todo</div>
+    <div class="message">Estas en mi mente a todas horas mi amor</div>
+    <div class="message">Tu sonrisa me encanta corazon de melon</div>
+    <div class="message">Te amo más de lo que puedes imaginar</div>
+    <div class="message">Eres y siempre seras mi persona favorita</div>
+    <div class="message">En mi cabeza eres la mas hermosa y preciosa</div>
+    <div class="message">Te amo, te extraño, te necesito</div>
+    <div class="message">Mi amor por ti es infinito</div>
+    <div class="message">Eres mi sueño hecho realidad</div>
+    <div class="message">Te amo con toda nuestra granjita</div>
+    <div class="message">Cada momento contigo es lo mejor</div>
+    
+    <div class="messages-mobile">
+        <div class="message-mobile">Te amo mucho, mi amor.</div>
+        <div class="message-mobile">Te extraño demasiado a cualquier hora</div>
+        <div class="message-mobile">Eres mi todo</div>
+        <div class="message-mobile">Eres lo mejor que me a pasado</div>
+        <div class="message-mobile">Cada día te amo más que el anterior.</div>
+        <div class="message-mobile">Sueño contigo todas las noches.</div>
+        <div class="message-mobile">Eres la luz de mi vida.</div>
+        <div class="message-mobile">No puedo imaginar mi vida sin ti.</div>
+        <div class="message-mobile">Te amo con todo mi ser.</div>
+        <div class="message-mobile">Eres mi princesa, mi reina, mi todo.</div>
+        <div class="message-mobile">Estas en mi mente a todas horas mi amor</div>
+        <div class="message-mobile">Cada sonrisa tuya ilumina mi día.</div>
+        <div class="message-mobile">Te amo más allá de las palabras.</div>
+        <div class="message-mobile">Eres mi amor eterno.</div>
+        <div class="message-mobile">No hay nadie como tú en el mundo.</div>
+        <div class="message-mobile">Te amo, te extraño, te necesito.</div>
+        <div class="message-mobile">Mi amor por ti es infinito.</div>
+        <div class="message-mobile">Eres mi sueño hecho realidad.</div>
+        <div class="message-mobile">Te amo con toda nuestra granjita</div>
+        <div class="message-mobile">Cada momento contigo es lo mejor</div>
+    </div>
+    
+    <div class="image-container">
+        <a href="Imagen 1.html"><img src="Numero 1.jpg" alt="Imagen romántica 1"></a>
+        <a href="Imagen 2.html"><img src="Remplazo 2.jpg" alt="Imagen romántica 2"></a>
+        <a href="Imagen 3.html"><img src="Numero 3.jpg" alt="Imagen romántica 3"></a>
+        <a href="Imagen 4.html"><img src="Reemplazo 4.jpg" alt="Imagen romántica 4"></a>
+    </div>
+
+    <p>Con todo mi amor ❤️</p>
+</body>
+</html>
